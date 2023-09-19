@@ -40,7 +40,16 @@
         @csrf
         <div class="form-group">
             <label class="font-weight-bolder">Masukkan Angka</label>
-            <input type="text" class="form-control" placeholder="Masukan Angka" name="input" value="{{ session('input', '') }}">
+            <input type="text" class="form-control" placeholder="Masukan Angka" name="input" value="{{ session('input', '') }}" required>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bolder">Tipe</label>
+            <select name="tipe" class="form-control base-plugin--select2 tipe"
+                placeholder="{{ __('Pilih Salah Satu') }}" required>
+                <option value="">{{ __('Pilih Salah Satu') }}</option>
+                <option value="api">{{ __('API') }}</option>
+                <option value="sp sql">{{ __('SP SQL') }}</option>
+            </select>
         </div>
         <hr>
         <div class="form-group" style="text-align:center;">

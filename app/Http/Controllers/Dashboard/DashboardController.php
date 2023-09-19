@@ -10,6 +10,8 @@ use App\Models\Globals\History;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
+use Illuminate\Support\Facades\DB;
+
 
 
 class DashboardController extends Controller
@@ -86,10 +88,28 @@ class DashboardController extends Controller
             ->make(true);
     }
 
-    public function result(Request $request){
-        $response = Http::post('http://localhost:8000/api/square-root',['input' => 0]);
+    public function result( SqrtRequest $request){
+        $input = $request->input;
+        $tipe = $request->tipe;
+        if($tipe == 'sp sql'){
+            // Mendefinisikan nama stored procedure
+            $procedureName = 'sqrt_root_manual';
 
-        return csrf_token();
+            // Mendefinisikan parameter jika diperlukan
+            $parameters = [
+                // Parameter 1
+                'input' => $request->input
+            ];
+
+            // Memanggil stored procedure dengan Query Builder
+            $results = DB::select("CALL $procedureName(?)", [$parameters['input']]);
+            $output = sqrt($input);
+            return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
+        }else{
+            
+        }
+        
+
     }
 
 }
