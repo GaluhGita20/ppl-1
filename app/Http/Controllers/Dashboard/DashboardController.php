@@ -88,9 +88,23 @@ class DashboardController extends Controller
             ->make(true);
     }
 
-    public function result( SqrtRequest $request){
+    public function result( Request $request){
         $input = $request->input;
         $tipe = $request->tipe;
+        $message = true;
+        // validasi 
+        if(!is_numeric($input)){
+            $message_error = "Input angka bukan bertipe numeric!";
+        }else if($input < 0){
+            $message_error = "Input angka harus >= 0!";
+        }else{
+            $message_error = NULL;
+            $message = false;
+        }
+        if($message){
+            $output = NULL;
+            return redirect(route('index'))->with(compact('input', 'tipe', 'output', 'message', 'message_error'));
+        }
         if($tipe == 'sp sql'){
             // Mendefinisikan nama stored procedure
             $procedureName = 'sqrt_root_manual';
@@ -103,10 +117,17 @@ class DashboardController extends Controller
 
             // Memanggil stored procedure dengan Query Builder
             $results = DB::select("CALL $procedureName(?)", [$parameters['input']]);
-            $output = sqrt($input);
+            $output = History::latest()->first()->output;
             return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
         }else{
-            
+            $response = Http::withHeaders([
+                'X-CSRF-TOKEN' => csrf_token()
+            ])->post('http://127.0.0.1:9000/api/square-root', [
+                'input' => $input
+            ]);
+
+            $output = History::latest()->first()->output;
+            return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
         }
         
 

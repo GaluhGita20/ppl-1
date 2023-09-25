@@ -18,7 +18,7 @@ class CreateSysHistoryTable extends Migration
             $table->string('tipe');
             $table->float('input')->nullable();
             $table->float('output')->nullable();
-            $table->float('duration')->nullable();
+            $table->float('duration', 9)->nullable();
             $table->timestamps();
         });
     }

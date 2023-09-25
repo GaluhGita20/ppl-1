@@ -40,7 +40,7 @@
         @csrf
         <div class="form-group">
             <label class="font-weight-bolder">Masukkan Angka</label>
-            <input type="text" class="form-control" placeholder="Masukan Angka" name="input" value="{{ session('input', '') }}" required>
+            <input type="text" class="form-control" placeholder="Masukan Angka" name="input" value="{{ session('input', '') }}" required id='input'>
         </div>
         <div class="form-group">
             <label class="font-weight-bolder">Tipe</label>
@@ -59,14 +59,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
-                    <button type="submit" class="btn btn-info btn-block font-weight-bold my-3 py-3">API</button>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
-                    <button type="submit" class="btn btn-success btn-block font-weight-bold my-3 py-3">SP SQL</button>
+                    <button type="submit" class="btn btn-success btn-block font-weight-bold my-3 py-3">Submit</button>
                 </div>
             </div>
         </div>
@@ -94,6 +89,8 @@
 @endsection
 @push('scripts')
 <script>
+
+    let el = document.getElementById('input')
     function showAlert() {
         var alert = document.getElementById('myAlert');
         alert.style.display = 'block';
