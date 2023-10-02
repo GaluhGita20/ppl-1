@@ -16,9 +16,9 @@ class CreateSysHistoryTable extends Migration
         Schema::create('sys_history', function (Blueprint $table) {
             $table->id();
             $table->string('tipe');
-            $table->float('input')->nullable();
-            $table->float('output')->nullable();
-            $table->float('duration', 9)->nullable();
+            $table->double('input', 32, 17)->nullable();
+            $table->double('output', 32, 17)->nullable();
+            $table->double('duration', 32, 17)->nullable();
             $table->timestamps();
         });
     }
