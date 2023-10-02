@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Support\Facades\DB;
+
 class CreateStoredProcedureSqrtManual extends Migration
 {
     /**
@@ -14,10 +16,8 @@ class CreateStoredProcedureSqrtManual extends Migration
     public function up()
     {
         DB::unprepared('
-            DELIMITER $$
-            USE `dbppl`$$
-            DROP PROCEDURE IF EXISTS `sqrt_root_manual`$$
-            CREATE DEFINER=`root`@`dbppl.cjedq9nnigwi.eu-north-1.rds.amazonaws.com` PROCEDURE `sqrt_root_manual`(IN input DOUBLE)
+            USE `dbppl`;
+            CREATE PROCEDURE `sqrt_root_manual`(IN input DOUBLE)
             BEGIN
                 DECLARE tebak_awal DOUBLE;
                 DECLARE iterasi DOUBLE;
@@ -41,8 +41,7 @@ class CreateStoredProcedureSqrtManual extends Migration
                 SET duration = end_time - start_time;
 
                 INSERT INTO sys_history (`tipe`, `input`,`output`, `duration`, `created_at`, `updated_at`) VALUES ("SP SQL", input, tebak_awal, duration, NOW(), NOW());
-            END$$
-            DELIMITER ;
+            END
         ');
     }
 
