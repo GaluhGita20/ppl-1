@@ -9,6 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -39,6 +40,13 @@ class AppServiceProvider extends ServiceProvider
         }
         
         $this->newBaseMacro();
+
+        // tambahkan di .env untuk lokal
+        // FORCE_HTTPS=false
+        if (env('FORCE_HTTPS', true)) { // Default value should be false for local server
+            URL::forceScheme('https');
+        }
+
     }
 
     public function newBaseMacro()
