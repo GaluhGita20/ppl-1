@@ -166,8 +166,6 @@ return [
          * Package Service Providers...
          */
         Felixkiss\UniqueWithValidator\ServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
-        Webklex\PDFMerger\Providers\PDFMergerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -234,9 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         // Additional
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Base' => App\Support\Base::class,
-        'PDFMerger' => Webklex\PDFMerger\Facades\PDFMergerFacade::class,
         
     ],
 
