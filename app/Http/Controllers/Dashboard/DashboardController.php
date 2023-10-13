@@ -108,15 +108,8 @@ class DashboardController extends Controller
         if($tipe == 'sp sql'){
             // Mendefinisikan nama stored procedure
             $procedureName = 'sqrt_root_manual';
-
-            // Mendefinisikan parameter jika diperlukan
-            $parameters = [
-                // Parameter 1
-                'input' => $request->input
-            ];
-
             // Memanggil stored procedure dengan Query Builder
-            $results = DB::select("CALL sqrt_root_manual(" . $request->input . ")");
+            $results = DB::select("SELECT $procedureName(?) AS output", [$input]);
             $output = History::latest()->first()->output;
             return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
         }else{
