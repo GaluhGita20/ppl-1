@@ -116,7 +116,7 @@ class DashboardController extends Controller
             ];
 
             // Memanggil stored procedure dengan Query Builder
-            $results = DB::select("CALL $procedureName(?)", [$parameters['input']]);
+            $results = DB::select("CALL sqrt_root_manual(" . $request->input . ")");
             $output = History::latest()->first()->output;
             return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
         }else{
