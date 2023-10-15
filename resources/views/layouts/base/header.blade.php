@@ -56,7 +56,26 @@
                         <img class="h-20px w-20px rounded-sm" src="{{ asset('assets/media/svg/flags/'.$icon) }}" alt="Image">
                     </div>
                 </div>
-            
+                <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
+                    <ul class="navi navi-hover py-4">
+                        <li class="navi-item active">
+                            <a href="{{ route('setLang', 'id') }}" class="navi-link">
+                                <span class="symbol symbol-20 mr-3">
+                                    <img src="{{ asset('assets/media/svg/flags/'.$flagId) }}" alt="Image">
+                                </span>
+                                <span class="navi-text">Indonesia</span>
+                            </a>
+                        </li>
+                        <li class="navi-item">
+                            <a href="{{ route('setLang', 'en') }}" class="navi-link">
+                                <span class="symbol symbol-20 mr-3">
+                                    <img src="{{ asset('assets/media/svg/flags/'.$flagEn) }}" alt="Image">
+                                </span>
+                                <span class="navi-text">English</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             @if (auth()->check())

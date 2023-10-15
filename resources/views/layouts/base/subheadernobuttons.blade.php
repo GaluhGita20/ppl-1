@@ -19,7 +19,7 @@
                             @if (!in_array(strtolower($show), ['home', 'dashboard']))
                                 <li class="breadcrumb-item text-muted">
                                     <a href="{{ $link }}" class="text-muted base-content--replace">
-                                        {{ __($show) }}
+                                        {!! __($show) !!}
                                     </a>
                                 </li>
                             @endif

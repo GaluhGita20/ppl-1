@@ -1,4 +1,4 @@
-@extends('layouts-1.app')
+@extends('layouts.app')
 @section('content-1')
 
 <style>
@@ -36,7 +36,7 @@
         <span class="closebtn" onclick="closeAlert()">&times;</span>
     </div>
     @endif
-    <form class="form" method="POST" action="{{route($route . '.result')}}">
+    <form class="form" method="POST" action="{{route($routes . '.result')}}">
         @csrf
         <div class="form-group">
             <label class="font-weight-bolder">Masukkan Angka</label>
