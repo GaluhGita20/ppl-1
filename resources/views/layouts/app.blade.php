@@ -18,8 +18,6 @@
         <link rel="stylesheet" href="{{ (('/assets/css/plugins.bundle.css')) }}">
         <link rel="stylesheet" href="{{ (('/assets/css/theme.bundle.css')) }}">
         <link rel="stylesheet" href="{{ (('/assets/css/theme.skins.bundle.css')) }}">
-        <link rel="stylesheet" href="{{ (('/assets/css/base.bundle.css')) }}">
-        <link rel="stylesheet" href="{{ (('/assets/css/modules.bundle.css')) }}">
 
         <script src="{{ (('/assets/js/plugins.bundle.js')) }}"></script>
         <style>

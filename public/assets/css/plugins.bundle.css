@@ -11150,34 +11150,14 @@ readers do not read off random characters that represent icons */
   overflow: visible;
   position: static;
   width: auto; }
-@font-face {
-  font-family: 'Line Awesome Brands';
-  font-style: normal;
-  font-weight: normal;
-  font-display: auto;
-  src: url(./fonts/line-awesome/la-brands-400.eot);
-  src: url(./fonts/line-awesome/la-brands-400.eot?#iefix) format("embedded-opentype"), url(./fonts/line-awesome/la-brands-400.woff2) format("woff2"), url(./fonts/line-awesome/la-brands-400.woff) format("woff"), url(./fonts/line-awesome/la-brands-400.ttf) format("truetype"), url(./fonts/line-awesome/la-brands-400.svg#lineawesome) format("svg"); }
 
 .lab {
   font-family: 'Line Awesome Brands'; }
-@font-face {
-  font-family: 'Line Awesome Free';
-  font-style: normal;
-  font-weight: 400;
-  font-display: auto;
-  src: url(./fonts/line-awesome/la-regular-400.eot);
-  src: url(./fonts/line-awesome/la-regular-400.eot?#iefix) format("embedded-opentype"), url(./fonts/line-awesome/la-regular-400.woff2) format("woff2"), url(./fonts/line-awesome/la-regular-400.woff) format("woff"), url(./fonts/line-awesome/la-regular-400.ttf) format("truetype"), url(./fonts/line-awesome/la-regular-400.svg#lineawesome) format("svg"); }
+
 
 .lar {
   font-family: 'Line Awesome Free';
   font-weight: 400; }
-@font-face {
-  font-family: 'Line Awesome Free';
-  font-style: normal;
-  font-weight: 900;
-  font-display: auto;
-  src: url(./fonts/line-awesome/la-solid-900.eot);
-  src: url(./fonts/line-awesome/la-solid-900.eot?#iefix) format("embedded-opentype"), url(./fonts/line-awesome/la-solid-900.woff2) format("woff2"), url(./fonts/line-awesome/la-solid-900.woff) format("woff"), url(./fonts/line-awesome/la-solid-900.ttf) format("truetype"), url(./fonts/line-awesome/la-solid-900.svg#lineawesome) format("svg"); }
 
 .la,
 .las {
@@ -13352,17 +13332,6 @@ readers do not read off random characters that represent icons */
     Creation date: 20/03/2017 20:02
     */
 
-@font-face {
-  font-family: "Flaticon";
-  src: url(./fonts/flaticon/Flaticon.eot);
-  src: url(./fonts/flaticon/Flaticon.eot?#iefix) format("embedded-opentype"),
-       url(./fonts/flaticon/Flaticon.woff) format("woff"),
-       url(./fonts/flaticon/Flaticon.ttf) format("truetype"),
-       url(./fonts/flaticon/Flaticon.svg#Flaticon) format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
 [class^="flaticon-"]:before,
 [class*=" flaticon-"]:before {
     font-family: Flaticon;
@@ -13621,17 +13590,6 @@ readers do not read off random characters that represent icons */
     Flaticon icon font: Flaticon
     Creation date: 20/03/2017 20:02
     */
-
-@font-face {
-  font-family: "Flaticon2";
-  src: url(./fonts/flaticon2/Flaticon2.eot);
-  src: url(./fonts/flaticon2/Flaticon2.eot?#iefix) format("embedded-opentype"),
-       url(./fonts/flaticon2/Flaticon2.woff) format("woff"),
-       url(./fonts/flaticon2/Flaticon2.ttf) format("truetype"),
-       url(./fonts/flaticon2/Flaticon2.svg#Flaticon2) format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
 
 [class^="flaticon2-"]:before,
 [class*=" flaticon2-"]:before {
