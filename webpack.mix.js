@@ -85,36 +85,36 @@ mix.webpackConfig({
                         search: /url\((\.\.\/)?webfonts\/(fa-.*?)"?\)/g,
                         replace: 'url(./fonts/@fortawesome/$2)',
                     },
-                    {
-                        // flaticon
-                        search: /url\(("?\.\/)?font\/(Flaticon\..*?)"?\)/g,
-                        replace: 'url(./fonts/flaticon/$2)',
-                    },
-                    {
-                        // flaticon2
-                        search: /url\(("?\.\/)?font\/(Flaticon2\..*?)"?\)/g,
-                        replace: 'url(./fonts/flaticon2/$2)',
-                    },
-                    {
-                        // keenthemes fonts
-                        search: /url\(("?\.\/)?(Ki\..*?)"?\)/g,
-                        replace: 'url(./fonts/keenthemes-icons/$2)',
-                    },
-                    {
-                        // lineawesome fonts
-                        search: /url\(("?\.\.\/)?fonts\/(la-.*?)"?\)/g,
-                        replace: 'url(./fonts/line-awesome/$2)',
-                    },
-                    {
-                        // socicons
-                        search: /url\(("?\.\.\/)?font\/(socicon\..*?)"?\)/g,
-                        replace: 'url(./fonts/socicon/$2)',
-                    },
-                    {
-                        // summernote
-                        search: /url\(("?\.\.\/)?font\/(summernote\..*?)"?\)/g,
-                        replace: 'url(./fonts/summernote/$2)',
-                    },
+                    // {
+                    //     // flaticon
+                    //     search: /url\(("?\.\/)?font\/(Flaticon\..*?)"?\)/g,
+                    //     replace: 'url(./fonts/flaticon/$2)',
+                    // },
+                    // {
+                    //     // flaticon2
+                    //     search: /url\(("?\.\/)?font\/(Flaticon2\..*?)"?\)/g,
+                    //     replace: 'url(./fonts/flaticon2/$2)',
+                    // },
+                    // {
+                    //     // keenthemes fonts
+                    //     search: /url\(("?\.\/)?(Ki\..*?)"?\)/g,
+                    //     replace: 'url(./fonts/keenthemes-icons/$2)',
+                    // },
+                    // {
+                    //     // lineawesome fonts
+                    //     search: /url\(("?\.\.\/)?fonts\/(la-.*?)"?\)/g,
+                    //     replace: 'url(./fonts/line-awesome/$2)',
+                    // },
+                    // {
+                    //     // socicons
+                    //     search: /url\(("?\.\.\/)?font\/(socicon\..*?)"?\)/g,
+                    //     replace: 'url(./fonts/socicon/$2)',
+                    // },
+                    // {
+                    //     // summernote
+                    //     search: /url\(("?\.\.\/)?font\/(summernote\..*?)"?\)/g,
+                    //     replace: 'url(./fonts/summernote/$2)',
+                    // },
                 ],
             },
         ]),
