@@ -109,9 +109,7 @@
             <!--end::Login-->
         </div>
         <div id="base_script" class="no-body-clear">
-            <script src="{{ '/assets/js/theme.bundle.js' }}"></script>
             <script src="{{ '/assets/js/base.bundle.js' }}"></script>
-            <script src="{{ '/assets/js/modules.bundle.js' }}"></script>
             <script>
 
                 $(function() {
