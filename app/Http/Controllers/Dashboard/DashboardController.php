@@ -113,13 +113,34 @@ class DashboardController extends Controller
             $output = History::latest()->first()->output;
             return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
         }else{
-            $response = Http::withHeaders([
-                'X-CSRF-TOKEN' => csrf_token()
-            ])->post('http://127.0.0.1:9000/api/square-root', [
-                'input' => $input
-            ]);
+            $output = sqrt($input);
+            $hasil = $input/2;
+            $tebak = 0;
+            $toleransi = 0.00001;
 
-            $output = History::latest()->first()->output;
+            $mulai = hrtime(true);
+            while(abs($hasil - $tebak) > $toleransi){
+                $tebak = $hasil;
+                $hasil = 0.5 * ($hasil + ($input / $hasil));
+            }
+            $akhir = hrtime(true);
+            $waktu = ($akhir - $mulai) / 1e9;
+            $waktu = number_format($waktu, 9, '.', '');
+            $record = new History;
+            $record->fill([
+                'tipe' => 'API',
+                'input' => $input,
+                'output' => $hasil,
+                'duration' => $waktu,
+            ]);
+            $record->save();
+            // $response = Http::withHeaders([
+            //     'X-CSRF-TOKEN' => csrf_token()
+            // ])->post('http://127.0.0.1:9000/api/square-root', [
+            //     'input' => $input
+            // ]);
+
+            // $output = History::latest()->first()->output;
             return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
         }
         

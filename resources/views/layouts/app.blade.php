@@ -142,17 +142,7 @@
         data-module="{{ $module ?? '' }}">
         @stack('styles')
         @yield('content')
-        <div class="base-content--state"
-            data-title="{{ !empty($title) ? $title . ' | ' . config('app.name') : config('app.name') }}"
-            data-url="{{ url()->full() }}" data-csrf-token="{{ csrf_token() }}"
-            data-last-user-notification="{{ auth()->user()->getLastNotificationId() }}">
-            <script>
-                if (!document.getElementById('kt_body')) {
-                    document.getElementById("content-page").style.display = "none";
-                    window.location.reload();
-                }
-            </script>
-        </div>
+       
         @stack('scripts')
     </div>
 @endif
