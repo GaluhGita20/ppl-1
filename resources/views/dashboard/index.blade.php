@@ -74,7 +74,7 @@
 @endsection
 @section('content-2')
 <!--begin::Signin-->
-<div class="login-form login-signin">
+<div class="login-form login-signin" style="width:100%; max-width:unset;">
     <div class="mb-10 mb-lg-15">
         <h1 class="font-size-h2 font-weight-boldest">History</h1>
     </div>

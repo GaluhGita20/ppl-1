@@ -1,34 +1,5 @@
 <div class="card card-custom">
 	<div class="card-body">
-		@section('dataFilters')
-			<table id="dataFilters" class="width-full">
-				<tbody>
-					<tr>
-						<td class="pb-2 valign-top td-filter-reset width-80px">
-							<div class="reset-filter mr-1 hide">
-								<button class="btn btn-secondary btn-icon width-full reset button" data-toggle="tooltip" data-original-title="Reset Filter"><i class="fas fa-sync"></i></button>
-							</div>
-							<div class="label-filter mr-1">
-								<button class="btn btn-secondary btn-icon width-full filter button" data-toggle="tooltip" data-original-title="Filter"><i class="fas fa-filter"></i></button>
-							</div>
-						</td>
-						<td>
-							<input type="hidden" class="form-control filter-control" data-post="ids" value="{{ request()->get('ids') }}">
-							@section('filters')
-								{!! $filters ?? '' !!}
-							@show
-						</td>
-						<td class="text-right td-btn-create text-nowrap">
-							@yield('buttons-before')
-							{{-- @section('buttons')
-								@include('layouts.forms.btnAdd')
-							@show --}}
-							@yield('buttons-after')
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		@show
 		<div class="table-responsive">
 		    @if(isset($tableStruct['datatable_1']))
 			    <table id="datatable_1" class="table table-bordered table-hover is-datatable" style="width: 100%;" data-url="{{ isset($tableStruct['url']) ? $tableStruct['url'] : route($routes.'.grid') }}" data-paging="{{ $paging ?? true }}" data-info="{{ $info ?? true }}">
