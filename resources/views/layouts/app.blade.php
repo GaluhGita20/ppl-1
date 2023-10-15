@@ -79,14 +79,14 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="d-flex">
-                                            <div class="p-10">
+                                            <div class="p-20">
                                                 @yield('content-1')
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="d-flex">
-                                            <div class="p-10">
+                                            <div class="p-20">
                                                 @yield('content-2')
                                             </div>
                                         </div>
