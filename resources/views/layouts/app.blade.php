@@ -13,8 +13,6 @@
         <meta name="description" content="Aplication by PT Pragma Informatika" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <link rel="shortcut icon" href="{{ asset(config('base.logo.favicon')) }}" />
-        <link rel="stylesheet" href="{{ ('/assets/css/fonts/poppins/all.css') }}">
         <link rel="stylesheet" href="{{ (('/assets/css/plugins.bundle.css')) }}">
         <link rel="stylesheet" href="{{ (('/assets/css/theme.bundle.css')) }}">
         <link rel="stylesheet" href="{{ (('/assets/css/theme.skins.bundle.css')) }}">
@@ -81,22 +79,16 @@
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="d-flex">
-                                            <div class="p-20">
+                                            <div class="p-10">
                                                 @yield('content-1')
                                             </div>
-                                            <!-- <div class="d-none d-xl-flex">
-                                                <img src="{{ asset('assets/images/bg-login.png') }}" alt="bank jatim e-mutasi">
-                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="d-flex">
-                                            <div class="p-20">
+                                            <div class="p-10">
                                                 @yield('content-2')
                                             </div>
-                                            <!-- <div class="d-none d-xl-flex">
-                                                <img src="{{ asset('assets/images/bg-login.png') }}" alt="bank jatim e-mutasi">
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -111,9 +103,6 @@
                                 © 2022 All Rights Reserved
                             </div>
                         </div>
-                    <!--end::Content body-->
-                    <!--begin::Content footer for mobile-->
-                    <!--end::Content footer for mobile-->
                 </div>
                 <!--end::Content-->
             </div>
@@ -123,7 +112,6 @@
             <script src="{{ '/assets/js/theme.bundle.js' }}"></script>
             <script src="{{ '/assets/js/base.bundle.js' }}"></script>
             <script src="{{ '/assets/js/modules.bundle.js' }}"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
             <script>
 
                 $(function() {
