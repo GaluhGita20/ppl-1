@@ -5,11 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SqrtRequest;
-use Yajra\DataTables\DataTables;
 use App\Models\Globals\History;
 use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
-
 use Illuminate\Support\Facades\DB;
 
 
