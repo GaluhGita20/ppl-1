@@ -19,6 +19,9 @@
         line-height: 20px;
         cursor: pointer;
     }
+    .hidden{
+        display: none;
+    }
 </style>
 <!--begin::Signin-->
 <div class="login-form login-signin">
@@ -80,8 +83,29 @@
     </div>
     <div class="row">
       <div class="col-lg-12">
-        @includeWhen(empty($tableStruct['tabs']), 'layouts.partials.datatable')
-        @includeWhen(!empty($tableStruct['tabs']), 'layouts.partials.datatables')
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tipe</th>
+                        <th scope="col">Aktivitas</th>
+                        <th scope="col">Durasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($records as $index => $r)
+                        <tr class="text-center">
+                            <th scope="row">{{ $index + 1 }}</th>
+                            <td>{{ $r->tipe }}</td>
+                            <td>{!! 'Input=' . $r->input . '<br> Output=' . $r->output !!}</td>
+                            <td>{{ $r->duration }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                {{ $records->links() }}
+            </div>
       </div>
     </div>
 </div>

@@ -35,6 +35,7 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $records = History::paginate(8);
         $this->prepare(
             [
                 'tableStruct' => [
@@ -48,44 +49,7 @@ class DashboardController extends Controller
                 ],
             ]
         );
-        return $this->render($this->views.'.index');
-    }
-
-    public function grid()
-    {
-        $records = History::latest();
-
-        return DataTables::of($records)
-            ->editColumn(
-                'num',
-                function ($r) {
-                    return request()->start;
-                }
-            )
-            ->editColumn(
-                'created_at',
-                function ($r) {
-                    return $r->duration;
-                }
-            )
-            ->editColumn(
-                'tipe',
-                function ($r) {
-                    return $r->tipe;
-                }
-            )
-            ->editColumn(
-                'activity',
-                function ($r) {
-                    return "Input=" . $r->input . "<br>Output=" . $r->output;
-                }
-            )
-            ->rawColumns(
-                [
-                    'activity', 'tipe', 'created_at'
-                ]
-            )
-            ->make(true);
+        return $this->render($this->views.'.index')->with(compact('records'));
     }
 
     public function result( Request $request){
