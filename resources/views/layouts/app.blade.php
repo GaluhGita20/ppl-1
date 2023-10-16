@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="{{ (('/assets/css/theme.bundle.css')) }}">
         <link rel="stylesheet" href="{{ (('/assets/css/theme.skins.bundle.css')) }}">
 
-        <script src="{{ (('/assets/js/plugins.bundle.js')) }}"></script>
         <style>
             .patern-box{
                 width: 1030px;
