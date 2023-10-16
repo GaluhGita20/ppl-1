@@ -32,7 +32,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $records = History::paginate(8);
+        $records = History::latest()->paginate(8);
         $this->prepare(
             [
                 'tableStruct' => [
