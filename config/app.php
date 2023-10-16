@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Felixkiss\UniqueWithValidator\ServiceProvider::class,
+        // Felixkiss\UniqueWithValidator\ServiceProvider::class,
 
         /*
          * Application Service Providers...
