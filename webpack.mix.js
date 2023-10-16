@@ -28,33 +28,4 @@ mix.sass('resources/assets/theme/sass/theme.scss', 'public/assets/css/theme.bund
     .options({processCssUrls: false})
     .js('resources/assets/theme/js/theme.js', 'public/assets/js/theme.bundle.js');
 
-mix.webpackConfig({
-    plugins: [
-        new ReplaceInFileWebpackPlugin([
-            {
-                // rewrite font paths
-                dir: path.resolve('public/assets/css'),
-                test: /\.css$/,
-                rules: [
-                    {
-                        // fontawesome
-                        search: /url\((\.\.\/)?webfonts\/(fa-.*?)"?\)/g,
-                        replace: 'url(./fonts/@fortawesome/$2)',
-                    },
-                ],
-            },
-        ]),
-    ],
-});
 
-// BASE
-mix.styles([ 
-        'resources/assets/src/css/base.css',
-    ], 'public/assets/css/base.bundle.css')
-    .js('resources/assets/src/js/base.js', 'public/assets/js/base.bundle.js');
-
-// MODULE
-mix.styles([
-        'resources/assets/src/css/modules.css',
-    ], 'public/assets/css/modules.bundle.css')
-    .js('resources/assets/src/js/modules.js', 'public/assets/js/modules.bundle.js');
