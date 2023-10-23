@@ -16,6 +16,7 @@ use App\Http\Controllers\API\SqrtController;
 */
 
 Route::post('square-root', [SqrtController::class, 'handleSqrt'])->name('api.sqrt');
+
 Route::get('posts', function () {
     return response()->json(['message' => 'Ini adalah contoh rute API GET'], 200);
 });

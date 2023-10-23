@@ -32,7 +32,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $records = History::latest()->paginate(8);
+        $records = History::orderBy('created_at', 'DESC')->paginate(8);
         $this->prepare(
             [
                 'tableStruct' => [
@@ -74,34 +74,13 @@ class DashboardController extends Controller
             $output = History::latest()->first()->output;
             return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
         }else{
-            $output = sqrt($input);
-            $hasil = $input/2;
-            $tebak = 0;
-            $toleransi = 0.00001;
-
-            $mulai = hrtime(true);
-            while(abs($hasil - $tebak) > $toleransi){
-                $tebak = $hasil;
-                $hasil = 0.5 * ($hasil + ($input / $hasil));
-            }
-            $akhir = hrtime(true);
-            $waktu = ($akhir - $mulai) / 1e9;
-            $waktu = number_format($waktu, 9, '.', '');
-            $record = new History;
-            $record->fill([
-                'tipe' => 'API',
-                'input' => $input,
-                'output' => $hasil,
-                'duration' => $waktu,
+            $response = Http::withHeaders([
+                'X-CSRF-TOKEN' => csrf_token()
+            ])->post('http://127.0.0.1:9000/api/square-root', [
+                'input' => $input
             ]);
-            $record->save();
-            // $response = Http::withHeaders([
-            //     'X-CSRF-TOKEN' => csrf_token()
-            // ])->post('http://127.0.0.1:9000/api/square-root', [
-            //     'input' => $input
-            // ]);
 
-            // $output = History::latest()->first()->output;
+            $output = History::latest()->first()->output;
             return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
         }
         
