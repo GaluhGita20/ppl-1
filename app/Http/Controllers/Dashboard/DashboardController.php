@@ -76,7 +76,7 @@ class DashboardController extends Controller
         }else{
             $response = Http::withHeaders([
                 'X-CSRF-TOKEN' => csrf_token()
-            ])->post('http://127.0.0.1:9000/api/square-root', [
+            ])->post('https://api-ppl-square-root-dabe21a653e1.herokuapp.com/api/square-root', [
                 'input' => $input
             ]);
 
