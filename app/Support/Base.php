@@ -2,8 +2,19 @@
 
 namespace App\Support;
 
+use Statickidz\GoogleTranslate;
+
 class Base
 {
+    public static function trans($statement){
+        if(app()->getLocale() != 'id'){
+            $tr = new GoogleTranslate();
+
+            return $tr->translate($statement, 'id', app()->getLocale());
+        }
+        return $statement;
+    }
+
     public static function getInstance()
     {
         return new static;

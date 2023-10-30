@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Followup\FollowupReg;
-use App\Models\Master\Survey\Survey;
-use App\Models\Master\Survey\SurveyStatement;
-use App\Models\Survey\SurveyReg;
-use App\Models\Survey\SurveyRegUser;
-use App\Models\Survey\SurveyRegUserDetail;
+use App\Models\Auth\User;
+use App\Models\Conducting\Kka\KkaSampleDetail;
+use App\Models\Master\Aspect\Aspect;
+use App\Models\Preparation\Apm\ApmDetail;
+use App\Models\Preparation\Assignment\Assignment;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -34,18 +33,14 @@ class VerifyDatabase
      */
     public function checkData()
     {
-        // Big update migration : 2022_08_14_213012_add_column_to_trans_followup_regs_items.php
-        $records = FollowupReg::where('created_at', '<', '2022-08-15')->get();
+        // Terjadi perubahan table sys_users pada tanggal 2022-06-16
+        $records = User::whereNull('username')->get();
         foreach ($records as $record) {
-            $record->monitor()->delete();
-            $record->items()->delete();
-            $record->delete();
+            $record->fill([
+                'username' => str_replace(['.','_','-'], '', explode('@',$record->email)[0]),
+                'status' => 'active',
+            ]);
+            $record->save();
         }
-        // Big update migration : 2022_08_15_022856_create_ref_survey_categories_table.php
-        SurveyRegUserDetail::where('created_at', '<', '2022-08-15')->delete();
-        SurveyRegUser::where('created_at', '<', '2022-08-15')->delete();
-        SurveyReg::where('created_at', '<', '2022-08-15')->delete();
-        SurveyStatement::where('created_at', '<', '2022-08-15')->delete();
-        Survey::where('created_at', '<', '2022-08-15')->delete();
     }
 }
