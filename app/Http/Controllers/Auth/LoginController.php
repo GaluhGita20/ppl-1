@@ -101,6 +101,9 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
+        auth()->user()->update([
+            'last_login' => now()
+        ]);
         $request->merge(['module' => 'auth_logout']);
         
         $this->guard()->logout();
