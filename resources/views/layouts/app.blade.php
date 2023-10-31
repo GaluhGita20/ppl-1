@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="{{ (('/assets/css/theme.bundle.css')) }}">
         <link rel="stylesheet" href="{{ (('/assets/css/theme.skins.bundle.css')) }}">
 
+        <script src="{{ (('/assets/js/plugins.bundle.js')) }}"></script>
+
+
         <style>
             .patern-box{
                 width: 1030px;
@@ -97,7 +100,7 @@
                         </div>
                     </div>
                     <div class="align-items-center p-5">
-                            <div class="text-white font-weight-bold order-2 order-sm-1 my-2">BANK JATIM E-MUTASI - v1.0.0</div>
+                            <div class="text-white font-weight-bold order-2 order-sm-1 my-2">QC IT DEV - v1.0.0</div>
                             <div class="d-flex order-1 order-sm-2 my-2 text-white">
                                 © 2022 All Rights Reserved
                             </div>
@@ -107,16 +110,8 @@
             </div>
             <!--end::Login-->
         </div>
-        <div id="base_script" class="no-body-clear">
-            <!-- <script src="{{ '/assets/js/base.bundle.js' }}"></script> -->
-            <script>
-
-                $(function() {
-                    $('body').removeClass('content-loading');
-                });
-            </script>
-        </div>
         @stack('scripts')
+
     </body>
 
     </html>

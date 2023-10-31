@@ -9,6 +9,7 @@ use App\Models\Globals\History;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use DataTables;
 
 
 
@@ -40,12 +41,56 @@ class DashboardController extends Controller
                         $this->makeColumn('name:num|label:#|sortable:false|width:20px'),
                         $this->makeColumn('name:tipe|label:Jenis|sortable:true|className:text-center'),
                         $this->makeColumn('name:activity|label:Keterangan|className:text-center'),
+                        $this->makeColumn('name:user|label:Keterangan|className:text-center'),
                         $this->makeColumn('name:created_at|label:Durasi|sortable:true|width:180px'),
                     ]
                 ],
             ]
         );
         return $this->render($this->views.'.index')->with(compact('records'));
+    }
+
+    public function grid()
+    {
+        $records = History::with('user')->latest();
+
+        return DataTables::of($records)
+            ->editColumn(
+                'num',
+                function ($r) {
+                    return request()->start;
+                }
+            )
+            ->editColumn(
+                'created_at',
+                function ($r) {
+                    return $r->duration;
+                }
+            )
+            ->editColumn(
+                'tipe',
+                function ($r) {
+                    return $r->tipe;
+                }
+            )
+            ->editColumn(
+                'activity',
+                function ($r) {
+                    return "Input=" . $r->input . "<br>Output=" . $r->output;
+                }
+            )
+            ->editColumn(
+                'user',
+                function ($r) {
+                    return $r->user->username;
+                }
+            )
+            ->rawColumns(
+                [
+                    'activity', 'tipe', 'created_at'
+                ]
+            )
+            ->make(true);
     }
 
 
@@ -65,7 +110,7 @@ class DashboardController extends Controller
                 ],
             ]
         );
-        return $this->render($this->views.'.index')->with(compact('records'));
+        return $this->render($this->views.'.sqrt-root')->with(compact('records'));
     }
 
     public function result( Request $request){

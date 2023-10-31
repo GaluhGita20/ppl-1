@@ -3,6 +3,7 @@
 namespace App\Models\Globals;
 
 use App\Models\Model;
+use App\Models\Auth\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
