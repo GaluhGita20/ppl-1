@@ -15,6 +15,10 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+        <link rel="stylesheet" href="{{ (('/assets/css/plugins.bundle.css')) }}">
+        <link rel="stylesheet" href="{{ (('/assets/css/theme.bundle.css')) }}">
+        <link rel="stylesheet" href="{{ (('/assets/css/theme.skins.bundle.css')) }}">
+
         <style>
             .patern-box{
                 width: 1030px;
