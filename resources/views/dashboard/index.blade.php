@@ -27,16 +27,38 @@
 <div class="mb-10 mb-lg-15">
     <h1 class="font-size-h2 font-weight-boldest">Report</h1>
 </div>
-<div class="row">
-    <div class="col-lg-12">
-    @includeWhen(empty($tableStruct['tabs']), 'layouts.partials.datatable')
-    @includeWhen(!empty($tableStruct['tabs']), 'layouts.partials.datatables')
-    </div>
-</div>
+<table id="history-table" class="display">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tipe</th>
+            <th>Input</th>
+            <th>Output</th>
+            <th>Duration</th>
+        </tr>
+    </thead>
+</table>
 <!--end::Signin-->
 @endsection
 
 @push('scripts')
+<script>
+jQuery(document).ready(function() {
+    jQuery('#history-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{ route('dashboard.grid') }}',
+        columns: [
+            { data: 'id', name: 'id' },
+            { data: 'tipe', name: 'tipe' },
+            { data: 'input', name: 'input' },
+            { data: 'output', name: 'output' },
+            { data: 'duration', name: 'duration' },
+        ]
+    });
+});
+  
+</script>
 <script>
 
     let el = document.getElementById('input')

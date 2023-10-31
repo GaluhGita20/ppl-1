@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.auth2')
 @section('content')
 
 <style>
@@ -26,7 +26,6 @@
     }
 </style>
 <!--begin::Signin-->
-<div class="login-form login-signin">
     <div class="mb-10 mb-lg-15">
         <h1 class="font-size-h1 font-weight-boldest">PPL TASK 1</h1>
         <h1 class="font-size-h3"># Akar Kuadrat (API + SP SQL)</h1>
@@ -91,7 +90,6 @@
             @endif
         </div>
     </form>
-</div>
 @endsection
 
 @if (session('remember_username') != '')

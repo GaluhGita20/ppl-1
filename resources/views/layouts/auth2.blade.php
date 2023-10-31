@@ -13,10 +13,7 @@
         <meta name="description" content="Aplication by PT Pragma Informatika" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <link rel="stylesheet" href="{{ (('/assets/css/plugins.bundle.css')) }}">
-        <link rel="stylesheet" href="{{ (('/assets/css/theme.bundle.css')) }}">
-        <link rel="stylesheet" href="{{ (('/assets/css/theme.skins.bundle.css')) }}">
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
         <style>
             .patern-box{
@@ -62,33 +59,18 @@
         <div class="d-flex flex-column flex-root align-items-center justify-content-center">
             <!--begin::Login-->
             <!-- <div class="patern-box"></div> -->
-            <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row" id="kt_login">
+            <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row" id="kt_login" style="width:100%;">
                 <!--begin::Content-->
-                <div class="d-flex flex-column flex-row-fluid position-relative p-7 overflow-hidden">
-                    <!--begin::Content header-->
-                    {{-- <div class="position-absolute top-0 right-0 text-right mt-5 mb-15 mb-lg-0 flex-column-auto justify-content-center py-5 px-10">
-                        <span class="font-weight-bold text-dark-50">Dont have an account yet?</span>
-                        <a href="{{ route('register') }}" class="font-weight-bold ml-2">Sign Up!</a>
-                    </div> --}}
-                    <!--end::Content header-->
+                <div class="d-flex flex-column flex-row-fluid position-relative p-7 overflow-hidden" style="width:100%;">
                     <!--begin::Content body-->
-                    <div class="d-flex flex-column-fluid flex-center mt-30 mt-lg-0">
-                        <div class="card rounded-xl shadow">
+                    <div class="d-flex flex-column-fluid flex-center mt-30 mt-lg-0" style="width:100%;">
+                        <div class="card rounded-xl shadow" style="width:40%;">
                             <!--begin::Body-->
                             <div class="card-body p-0">
                                 <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="d-flex">
-                                            <div class="p-20">
-                                                @yield('content-1')
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="d-flex">
-                                            <div class="p-20">
-                                                @yield('content-2')
-                                            </div>
+                                    <div class="col-md-12">
+                                        <div class="p-20">
+                                            @yield('content')
                                         </div>
                                     </div>
                                 </div>
@@ -107,11 +89,9 @@
                 <!--end::Content-->
             </div>
             <!--end::Login-->
-        </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-        @stack('scripts')
 
+        </div>
+        @stack('scripts')
     </body>
 
     </html>

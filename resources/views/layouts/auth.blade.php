@@ -19,8 +19,6 @@
         <link rel="stylesheet" href="{{ (('/assets/css/theme.bundle.css')) }}">
         <link rel="stylesheet" href="{{ (('/assets/css/theme.skins.bundle.css')) }}">
 
-        <script src="{{ (('/assets/js/plugins.bundle.js')) }}"></script>
-
         <style>
             .patern-box{
                 width: 1030px;
@@ -95,9 +93,10 @@
                 <!--end::Content-->
             </div>
             <!--end::Login-->
+
         </div>
-        <script src="{{ '/assets/js/base.bundle.js' }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         @stack('scripts')
     </body>
 
