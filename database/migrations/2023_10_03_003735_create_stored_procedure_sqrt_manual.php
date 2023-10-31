@@ -61,7 +61,8 @@ class CreateStoredProcedureSqrtManual extends Migration
             END LOOP;
 
             end_time := NOW();
-            SET duration = TIMESTAMPDIFF(MICROSECOND, start_time, end_time) / 1000000.0;
+            SET duration = EXTRACT(EPOCH FROM (end_time - start_time)) + 
+            (EXTRACT(MICROSECONDS FROM end_time) - EXTRACT(MICROSECONDS FROM start_time)) / 1000000.0;
 
             INSERT INTO sys_history (tipe, input, output, duration, user_id, created_at, updated_at)
             VALUES ('SP SQL', input, tebak_awal, duration, user_id, NOW(), NOW());
