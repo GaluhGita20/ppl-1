@@ -8,6 +8,7 @@ use App\Http\Requests\SqrtRequest;
 use App\Models\Globals\History;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
+use GuzzleHttp\Client;
 
 
 
