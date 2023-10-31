@@ -16,6 +16,7 @@ class SqrtController extends Controller
         $request->validate(['input' => 'required|numeric|gte:0']);
 
         $input = $request->input;
+        $user_id = $request->user_id;
         $hasil = $input/2;
         $tebak = 0;
         $toleransi = 0.00001;
