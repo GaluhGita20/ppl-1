@@ -17,7 +17,7 @@ class CreateStoredProcedureSqrtManual extends Migration
     {
         // DB::unprepared('
         //     DROP PROCEDURE IF EXISTS `sqrt_root_manual`;
-        //     CREATE PROCEDURE sqrt_root_manual(input DOUBLE)
+        //     CREATE PROCEDURE sqrt_root_manual(input DOUBLE, user_id DOUBLE)
         //     BEGIN
         //         DECLARE tebak_awal DOUBLE;
         //         DECLARE iterasi DOUBLE;
@@ -28,19 +28,19 @@ class CreateStoredProcedureSqrtManual extends Migration
         //         SET tebak_awal = input / 2;
         //         SET iterasi = 0;
         //         SET epsilon = 0.000001;
-        //         SET start_time = NOW(6) + 0;
+        //         SET start_time = NOW(6);
         //         WHILE ABS(tebak_awal - iterasi) > epsilon DO
         //             SET iterasi = tebak_awal;
         //             SET tebak_awal = 0.5 * (tebak_awal + (input / tebak_awal));
         //         END WHILE;
-        //         SET end_time = NOW(6) + 0;
-        //         SET duration = end_time - start_time;
-        //         INSERT INTO sys_history (`tipe`, `input`,`output`, `duration`, `created_at`, `updated_at`) VALUES ("SP SQL", input, tebak_awal, duration, NOW(), NOW());
+        //         SET end_time = NOW(6); 
+        //         SET duration = TIMESTAMPDIFF(MICROSECOND, start_time, end_time) / 1000000.0;
+        //         INSERT INTO sys_history (`tipe`, `input`,`output`, `duration`, `user_id`, `created_at`, `updated_at`) VALUES ("SP SQL", input, tebak_awal, duration, user_id, NOW(), NOW());
         //     END');
 
         DB::unprepared("
-        DROP FUNCTION IF EXISTS sqrt_root_manual(input DOUBLE PRECISION);
-        CREATE OR REPLACE FUNCTION sqrt_root_manual(input DOUBLE PRECISION) RETURNS DOUBLE PRECISION AS $$
+        DROP FUNCTION IF EXISTS sqrt_root_manual(input DOUBLE PRECISION, user_id DOUBLE PRECISION);
+        CREATE OR REPLACE FUNCTION sqrt_root_manual(input DOUBLE PRECISION, user_id DOUBLE PRECISION) RETURNS DOUBLE PRECISION AS $$
         DECLARE
             tebak_awal DOUBLE PRECISION;
             iterasi DOUBLE PRECISION;
@@ -53,18 +53,18 @@ class CreateStoredProcedureSqrtManual extends Migration
             iterasi := 0;
             epsilon := 0.000001;
 
-            start_time := NOW() AT TIME ZONE 'UTC';
+            start_time := NOW();
 
             WHILE ABS(tebak_awal - iterasi) > epsilon LOOP
                 iterasi := tebak_awal;
                 tebak_awal := 0.5 * (tebak_awal + (input / tebak_awal));
             END LOOP;
 
-            end_time := NOW() AT TIME ZONE 'UTC';
-            duration := EXTRACT(EPOCH FROM (end_time - start_time));
+            end_time := NOW();
+            SET duration = TIMESTAMPDIFF(MICROSECOND, start_time, end_time) / 1000000.0;
 
-            INSERT INTO sys_history (tipe, input, output, duration, created_at, updated_at)
-            VALUES ('SP SQL', input, tebak_awal, duration, NOW() AT TIME ZONE 'UTC', NOW() AT TIME ZONE 'UTC');
+            INSERT INTO sys_history (tipe, input, output, duration, user_id, created_at, updated_at)
+            VALUES ('SP SQL', input, tebak_awal, duration, user_id, NOW(), NOW());
 
             RETURN tebak_awal;
         END;

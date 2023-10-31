@@ -15,13 +15,24 @@ class History extends Model
         'tipe',
         'input',
         'output',
-        'duration'
+        'duration',
+        'user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     /** SCOPE **/
     public function scopeGrid($query)
     {
-        return $query;
+        return $query->latest();
+    }
+
+    public function scopeGridByUser($query)
+    {
+        return $query->where('user_id', auth()->user()->id)->latest();
     }
 
     public function scopeFilters($query)
@@ -29,39 +40,4 @@ class History extends Model
         return $query;
     }
 
-    // public function handleResult($request)
-    // {
-    //     $client = new Client();
-    //     $url = 'http://localhost:8000/api/square-root';
-
-    //     $number = $request->input('input');
-    //     $response = Http::post(route('api.sqrt'), [
-    //         'input' => $number, // Gantilah ini dengan nilai yang sesuai
-    //     ]);
-
-    //     try {
-    //         $guzzleResponse = $client->get($url);
-
-    //         if ($guzzleResponse->getStatusCode() === 200) {
-    //             $data = json_decode($guzzleResponse->getBody(), true);
-    //             $output = $data['data']['hasil'];
-    //             $waktu = $data['data']['waktu'];
-
-    //             // Lanjutkan dengan pengisian dan penyimpanan data jika diperlukan
-    //             $this->fill([
-    //                 'tipe' => 'API',
-    //                 'input' => $number,
-    //                 'output' => $output,
-    //                 'duration' => $waktu,
-    //             ]);
-    //             $this->save();
-    //         } else {
-    //             // Tangani kesalahan jika status kode tidak sesuai
-    //             return response()->json(['error' => 'Gagal mengambil data'], 500);
-    //         }
-    //     } catch (\Exception $e) {
-    //         // Tangani kesalahan jika permintaan gagal
-    //         return response()->json(['error' => $e->getMessage()], 500);
-    //     }
-    // }
 }

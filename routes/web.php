@@ -33,8 +33,10 @@ Route::middleware('auth')->group(function () {
             );
         }
     );
-
-    Route::get('/', 'Dashboard\DashboardController@index')->name('index');
+    Route::redirect('/home', '/dashboard');
+    Route::redirect('/', '/dashboard');
+    Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('dashboard.index');
+    Route::get('/sqrt-root', 'Dashboard\DashboardController@sqrtRoot')->name('dashboard.sqrt-root');
     Route::post('/grid', 'Dashboard\DashboardController@grid')->name('dashboard.grid');
     Route::post('result', 'Dashboard\DashboardController@result')->name('dashboard.result');
 

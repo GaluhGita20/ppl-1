@@ -36,6 +36,7 @@ class SqrtController extends Controller
             'input' => $input,
             'output' => $hasil,
             'duration' => $waktu,
+            'user_id' => $user_id,
         ]);
         $record->save();
 

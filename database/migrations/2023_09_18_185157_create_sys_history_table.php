@@ -19,7 +19,10 @@ class CreateSysHistoryTable extends Migration
             $table->double('input', 32, 17)->nullable();
             $table->double('output', 32, 17)->nullable();
             $table->double('duration', 32, 17)->nullable();
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->commonFields();
+
+            $table->foreign('user_id')->references('id')->on('sys_users')->onDelete('cascade');
         });
     }
 

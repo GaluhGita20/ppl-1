@@ -28,11 +28,29 @@ class DashboardController extends Controller
         ]);
     }
 
-    
-
     public function index()
     {
-        $records = History::orderBy('created_at', 'DESC')->paginate(8);
+        $records = History::grid()->paginate(10);
+        $this->prepare(
+            [
+                'tableStruct' => [
+                    'table_url_1' => route('dashboard.grid'),
+                    'datatable_1' => [
+                        $this->makeColumn('name:num|label:#|sortable:false|width:20px'),
+                        $this->makeColumn('name:tipe|label:Jenis|sortable:true|className:text-center'),
+                        $this->makeColumn('name:activity|label:Keterangan|className:text-center'),
+                        $this->makeColumn('name:created_at|label:Durasi|sortable:true|width:180px'),
+                    ]
+                ],
+            ]
+        );
+        return $this->render($this->views.'.index')->with(compact('records'));
+    }
+
+
+    public function sqrtRoot()
+    {
+        $records = History::gridByUser()->paginate(8);
         $this->prepare(
             [
                 'tableStruct' => [
@@ -51,6 +69,7 @@ class DashboardController extends Controller
 
     public function result( Request $request){
         $input = $request->input;
+        $user_id = auth()->user()->id;
         $tipe = $request->tipe;
         $message = true;
         // validasi 
@@ -67,21 +86,19 @@ class DashboardController extends Controller
             return redirect(route('index'))->with(compact('input', 'tipe', 'output', 'message', 'message_error'));
         }
         if($tipe == 'sp sql'){
-            // Mendefinisikan nama stored procedure
             $procedureName = 'sqrt_root_manual';
-            // Memanggil stored procedure dengan Query Builder
-            $results = DB::select("SELECT $procedureName(?) AS output", [$input]);
-            $output = History::latest()->first()->output;
-            return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
+            $results = DB::select("CALL $procedureName(?, ?)", [$input, $user_id]);
+            $output = sqrt($input);
+            return redirect(route('dashboard.sqrt-root'))->with(compact('input', 'tipe', 'output'));
         }else{
             $response = Http::withHeaders([
                 'X-CSRF-TOKEN' => csrf_token()
             ])->post('https://api-ppl-square-root-dabe21a653e1.herokuapp.com/api/square-root', [
-                'input' => $input
+                'input' => $input, 'user_id' => auth()->user()->id
             ]);
 
-            $output = History::latest()->first()->output;
-            return redirect(route('index'))->with(compact('input', 'tipe', 'output'));
+            $output = sqrt($input);
+            return redirect(route('dashboard.sqrt-root'))->with(compact('input', 'tipe', 'output'));
         }
         
 

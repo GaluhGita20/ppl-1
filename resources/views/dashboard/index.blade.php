@@ -94,14 +94,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($records as $index => $r)
-                        <tr class="text-center">
-                            <th scope="row">{{ $index + 1 }}</th>
-                            <td>{{ $r->tipe }}</td>
-                            <td>{!! 'Input=' . $r->input . '<br> Output=' . $r->output !!}</td>
-                            <td>{{ $r->duration }}</td>
-                        </tr>
-                        @endforeach
+                        @if($records->count() == 0)
+                            <tr class="text-center">
+                                <td colspan="4">Data tidak ditemukan!</td>
+                            </tr>
+                        @else
+                            @foreach($records as $index => $r)
+                            <tr class="text-center">
+                                <th scope="row">{{ $index + 1 }}</th>
+                                <td>{{ $r->tipe }}</td>
+                                <td>{!! 'Input=' . $r->input . '<br> Output=' . $r->output !!}</td>
+                                <td>{{ $r->duration }}</td>
+                            </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
                 {{ $records->links() }}
