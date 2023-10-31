@@ -87,7 +87,7 @@ class DashboardController extends Controller
         }
         if($tipe == 'sp sql'){
             $procedureName = 'sqrt_root_manual';
-            $results = DB::select("CALL $procedureName(?, ?)", [$input, $user_id]);
+            $results = DB::select("SELECT $procedureName(?, ?)", [$input, $user_id]);
             $output = sqrt($input);
             return redirect(route('dashboard.sqrt-root'))->with(compact('input', 'tipe', 'output'));
         }else{
