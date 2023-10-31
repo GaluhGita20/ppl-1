@@ -38,6 +38,7 @@
         </tr>
     </thead>
 </table>
+<a href="{{route('dashboard.sqrt-root')}}" class="btn btn-info">Perhitungan</a>
 <!--end::Signin-->
 @endsection
 
